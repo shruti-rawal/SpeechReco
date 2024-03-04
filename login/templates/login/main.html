@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
+<style>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    padding-right: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+select {
+    width: 30%;
+    /* height: 50px; */
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+
+textarea {
+    width: 340px;
+    height: 250px;
+    padding: 30px;
+    padding-right: 50px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #83bbf6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}</style>
+</head>
+<body>
+    <h1>Language Translator</h1>
+    <div class="flex">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+       
+            <select id="source-language" >
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="es">Spanish</option>
+            <option value="ja">japanise</option>
+            <option value="zh-tw">Chinese</option>
+            <option value="ru">Russiun</option>
+            <option value="el">Greek</option>
+            <option value="bn">Bangoli</option>
+            <option value="ta">Tamil</option>
+        </select>
+
+        <select id="target-language" name="target-language">
+            <option value="en" id="eng">English</option>
+            <option value="hi" id="hi">Hindi</option>
+            <option value="es" id="es">Spanish</option>
+            <option value="ja" id="ja">japanise</option>
+            <option value="zh-tw" id="zh-tw">Chinese</option>
+            <option value="ru" id="ru">Russiun</option>
+            <option value="el" id="el">Greek</option>
+            <option value="bn" id="bn">Bangoli</option>
+            <option value="ta" id="ta">Tamil</option>
+            <option value="gu" id="ga">Gujarati</option>
+            
+        </select>
+    </div>
+    <div class="container">
+
+        <div class="form-group">
+            </div>
+            <button type="submit">Start Speech Recognition</button>
+        </form>
+    
+        <div class="form-group">
+            <label for="input-text">Enter Text:</label>
+            <textarea id="input-text" placeholder="Enter text to translate..." cols="40" rows="10">{{recognized_text}}</textarea>
+        </div>
+        <div class="form-group">
+            <button id="translate-btn" type="submit" value="tra" name="action"><img src="exchange.jpeg" alt="exchange"></button>
+        </div>
+        <div class="form-group">
+            <label for="output-text" cols="40" rows="10">Translated Text:</label>
+            <!-- <p><span id="english_translation"> </span></p> -->
+            <textarea id="output-text">{{ english_translation }}</textarea>
+        </div>
+    
+    </div>
+    
+</body>
+
+</html>
